@@ -4,6 +4,18 @@ import streamlit as st
 from PIL import Image
 
 st.set_page_config(page_title="Ed's Closet Finder", layout="wide")
+# --- Refresh / Troubleshooting ---
+with st.sidebar.expander("🔄 Refresh / Troubleshooting", expanded=False):
+    if st.button("Clear cache + refresh app"):
+        try:
+            st.cache_data.clear()
+        except Exception:
+            pass
+        try:
+            st.cache_resource.clear()
+        except Exception:
+            pass
+        st.rerun()
 
 st.title("Ed's Closet Storage Finder")
 st.caption("Search your stored clothing by item, size, color, or category. Photos + bin location.")
